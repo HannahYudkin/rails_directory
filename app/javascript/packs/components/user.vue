@@ -2,12 +2,20 @@
   <v-data-table
     :headers="headers"
     :items="desserts"
+    :search="search"
     sort-by="first_name"
     class="elevation-1"
   >
     <template v-slot:top>
       <v-toolbar flat color="white">
         <v-toolbar-title>My App!</v-toolbar-title>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
@@ -83,6 +91,7 @@
 import axios from "axios";
 export default {
   data: () => ({
+    search: "",
     dialog: false,
     headers: [
       {
