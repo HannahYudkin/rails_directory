@@ -61,7 +61,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-              <v-btn color="blue darken-1" text @click="save(editedItem)"
+              <v-btn color="blue darken-1" text @click="validate(editedItem)"
                 >Save</v-btn
               >
             </v-card-actions>
@@ -166,6 +166,43 @@ export default {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
+    },
+    validate(editedItem) {
+      function emailIsValid(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          email
+        );
+      }
+      switch (true) {
+        case !this.editedItem.first_name:
+          alert("First name required!");
+          break;
+        case !this.editedItem.last_name:
+          alert("Last name required!");
+          break;
+        case !this.editedItem.email:
+          alert("Email required!");
+          break;
+        case !this.editedItem.phone:
+          alert("Phone number required!");
+          break;
+        case !this.editedItem.task:
+          alert("Task required!");
+          break;
+        case isNaN(this.editedItem.phone) ||
+          this.editedItem.phone < 10 ||
+          this.editedItem.phone < 12:
+          alert("Phone number must be valid!");
+          break;
+        case !this.editedItem.task:
+          alert("Task required!");
+          break;
+        case !emailIsValid(this.editedItem.email):
+          alert("Proper email require!");
+          break;
+        default:
+          this.save(editedItem);
+      }
     },
     save(item) {
       if (this.editedIndex > -1) {
