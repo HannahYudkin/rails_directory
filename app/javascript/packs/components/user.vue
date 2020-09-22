@@ -131,7 +131,7 @@ export default {
         .get("http://localhost:3000/users")
         .then((response) => {
           console.log(response.data);
-          this.desserts = response.data;
+          this.people = response.data;
         })
         .catch((e) => {
           console.log(e);
@@ -141,7 +141,7 @@ export default {
       axios
         .get(`https://localhost:3000/${item.id}`)
         .then((response) => {
-          this.dessert = response.data;
+          this.people = response.data;
         })
         .catch((error) => {
           console.log(error);
@@ -151,6 +151,22 @@ export default {
       this.editedIndex = item.id;
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
+    },
+    deleteItem(item) {
+      const index = this.people.indexOf(item);
+      confirm("Are you sure you want to delete this item?");
+      axios
+        .delete(`http://localhost:3000/users/${item.id}`)
+        .then((response) => {
+          console.log(response);
+          console.log(response.data.json);
+          alert(response.data.json);
+          this.initialize();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      this.people.splice(index, 1);
     },
     save(item) {
       if (this.editedIndex > -1) {
