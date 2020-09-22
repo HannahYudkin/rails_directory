@@ -147,6 +147,11 @@ export default {
           console.log(error);
         });
     },
+    editItem(item) {
+      this.editedIndex = item.id;
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
   },
 };
 </script>
