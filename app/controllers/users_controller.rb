@@ -3,4 +3,12 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         render json: { data: @user, status: :ok, message: 'Success' }
       end
+
+    def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+        render json: { status: :ok, message: 'Success' }
+    else
+        render json: { json: @user.errors, status: :unprocessable_entity }
+    end
 end
