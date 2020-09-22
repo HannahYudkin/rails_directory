@@ -2,7 +2,7 @@
   <div id="app">
     <navbar></navbar>
     <v-app>
-      <p>{{ message }}</p>
+      <!-- <p>{{ message }}</p> -->
       <user />
     </v-app>
     <footerbottom></footerbottom>
