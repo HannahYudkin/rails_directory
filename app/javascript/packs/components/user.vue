@@ -126,12 +126,16 @@ export default {
     this.initialize();
   },
   methods: {
-    close() {
-      this.dialog = false;
-      setTimeout(() => {
-        this.editedItem = Object.assign({}, this.defaultItem);
-        this.editedIndex = -1;
-      }, 300);
+    initialize() {
+      return axios
+        .get("http://localhost:3000/users")
+        .then((response) => {
+          console.log(response.data);
+          this.desserts = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };
