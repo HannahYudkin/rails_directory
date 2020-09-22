@@ -4,12 +4,12 @@ one:
   first_name: MyString
   last_name: MyString
   email: MyString
-  phone: 1
+  phone: 
   task: MyString
 
 two:
   first_name: MyString
   last_name: MyString
   email: MyString
-  phone: 1
+  phone: 
   task: MyString
