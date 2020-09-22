@@ -25,4 +25,12 @@ class UsersController < ApplicationController
           render json: { json: @user.errors, status: :unprocessable_entity }
         end
       end
+
+    def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+        render json: { json: 'User was successfully deleted.'}
+    else
+        render json: { json: @user.errors, status: :unprocessable_entity }
+    end
 end
