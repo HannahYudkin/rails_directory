@@ -7,7 +7,7 @@
   >
     <template v-slot:top>
       <v-toolbar flat color="white">
-        <v-toolbar-title>Direct</v-toolbar-title>
+        <v-toolbar-title>My CRUD</v-toolbar-title>
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
@@ -137,16 +137,6 @@ export default {
           console.log(e);
         });
     },
-    getUser(item) {
-      axios
-        .get(`https://localhost:3000/${item.id}`)
-        .then((response) => {
-          this.people = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     editItem(item) {
       this.editedIndex = item.id;
       this.editedItem = Object.assign({}, item);
@@ -194,6 +184,7 @@ export default {
             console.log(error);
           });
       } else {
+        console.log(item);
         axios
           .post(`http://localhost:3000/users/`, {
             user: this.editedItem,
@@ -206,8 +197,19 @@ export default {
           .catch((error) => {
             console.log(error);
           });
+        this.people.push(this.editedItem);
       }
       this.close();
+    },
+    getUser(item) {
+      axios
+        .get(`http://localhost:3000/${item.id}`)
+        .then((response) => {
+          this.people = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
