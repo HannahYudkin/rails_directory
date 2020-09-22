@@ -171,6 +171,18 @@ export default {
             console.log(error);
           });
       } else {
+        axios
+          .post(`http://localhost:3000/users/`, {
+            user: this.editedItem,
+          })
+          .then((response) => {
+            console.log(response);
+            console.log("Created!");
+            this.initialize();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
       this.close();
     },
