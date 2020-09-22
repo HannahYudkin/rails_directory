@@ -137,6 +137,16 @@ export default {
           console.log(e);
         });
     },
+    getUser(item) {
+      axios
+        .get(`https://localhost:3000/${item.id}`)
+        .then((response) => {
+          this.dessert = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
