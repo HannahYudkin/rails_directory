@@ -152,6 +152,28 @@ export default {
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
+    save(item) {
+      if (this.editedIndex > -1) {
+        axios
+          .put(`http://localhost:3000/users/${item.id}`, {
+            id: this.editedItem.id,
+            first_name: this.editedItem.first_name,
+            last_name: this.editedItem.last_name,
+            email: this.editedItem.email,
+            phone: this.editedItem.phone,
+            task: this.editedItem.task,
+          })
+          .then((response) => {
+            console.log(response);
+            this.initialize();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+      }
+      this.close();
+    },
   },
 };
 </script>
