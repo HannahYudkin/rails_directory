@@ -9,12 +9,14 @@
     <template v-slot:top>
       <v-toolbar flat color="white">
         <v-toolbar-title>My App!</v-toolbar-title>
+        <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
           append-icon="mdi-magnify"
           label="Search"
           single-line
           hide-details
+          color="rgb(231,140,145)"
         ></v-text-field>
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
