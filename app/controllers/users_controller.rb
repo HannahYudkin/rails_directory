@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         render json: { data: @user, status: :ok, message: 'Success' }
-      end
+    end
 
     def update
     @user = User.find(params[:id])
@@ -24,13 +24,14 @@ class UsersController < ApplicationController
         else
           render json: { json: @user.errors, status: :unprocessable_entity }
         end
-      end
+    end
 
     def destroy
-    @user = User.find(params[:id])
-    if @user.destroy
-        render json: { json: 'User was successfully deleted.'}
-    else
-        render json: { json: @user.errors, status: :unprocessable_entity }
+        @user = User.find(params[:id])
+        if @user.destroy
+            render json: { json: 'User was successfully deleted.'}
+        else
+            render json: { json: @user.errors, status: :unprocessable_entity }
+        end
     end
 end

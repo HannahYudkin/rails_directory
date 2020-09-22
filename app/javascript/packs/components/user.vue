@@ -168,6 +168,13 @@ export default {
         });
       this.people.splice(index, 1);
     },
+    close() {
+      this.dialog = false;
+      setTimeout(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
+      }, 300);
+    },
     save(item) {
       if (this.editedIndex > -1) {
         axios
