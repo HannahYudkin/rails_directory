@@ -16,4 +16,13 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:id, :first_name, :last_name, :email, :phone,:task)
     end 
+
+    def create
+        @user = User.new(user_params)
+        if @user.save
+          render json: { status: :ok, message: 'Success' }
+        else
+          render json: { json: @user.errors, status: :unprocessable_entity }
+        end
+      end
 end
