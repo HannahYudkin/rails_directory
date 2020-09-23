@@ -1,24 +1,22 @@
-# README
+# Rails User Directory
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project Description:
 
-Things you may want to cover:
+A User Directory that stores first name, last name, email, phone number, and tasks of an individual. You can sort by either category, create, read, update, and delete individuals, and view the current date.
 
-* Ruby version
+## Preview
 
-* System dependencies
+<img src ="app/javascript/packs/assets/DirectoryImg.png">
 
-* Configuration
+## Built With:
 
-* Database creation
+- Vue.js
+- Vuetify
+- Ruby
+- Ruby on Rails
+- PostgreSQL
+- Rspec
 
-* Database initialization
+## Contributors:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Hannah Yudkin
