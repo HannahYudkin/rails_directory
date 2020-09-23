@@ -16,6 +16,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.2",
     "deepmerge": "^4.2.2",
     "fibers": "^5.0.0",
     "sass": "^1.26.11",
